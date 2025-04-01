@@ -16,7 +16,15 @@ jobs:
           run: |
             echo "Starting dummy test process..."
             # Simulate a long-running process (e.g., sleep for 1 minute)
-            sleep 60  # This will keep the action running for 60 seconds
+            sleep 30  # This will keep the action running for 60 seconds
             echo "Dummy tests complete."
+
+        - name: Notify the original repo
+          run: |
+            curl -X POST -H "Authorization: token ${{secrets.TEST_TOKEN_JOY}}" \
+                 -H "Accept: application/vnd.github.v3+json" \
+                 -H "Content-Type: application/json" \
+                 https://api.github.com/repos//sangeet-joy-tw/semantic-release-POC/dispatches \
+                 -d '{"event_type": "remote-check-done", "client_payload": { "pr_number": "${{github.event.inputs.pr_number}}", "status": "success"} }'
 
  
