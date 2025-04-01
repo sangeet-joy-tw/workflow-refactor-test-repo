@@ -1,0 +1,22 @@
+name: Remote workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "PR number"
+      callback_url:
+        description: "Webhook url"
+
+jobs:
+  run-checks:
+     runs-on: ubuntu-latest
+     steps:
+        - name: "Run tests"
+          run: |
+            echo "Starting dummy test process..."
+            # Simulate a long-running process (e.g., sleep for 1 minute)
+            sleep 60  # This will keep the action running for 60 seconds
+            echo "Dummy tests complete."
+
+ 
