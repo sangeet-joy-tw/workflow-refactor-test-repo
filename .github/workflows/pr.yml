@@ -7,6 +7,8 @@ on:
         description: "PR number"
       callback_url:
         description: "Webhook url"
+      pr_sha:
+        description: "PR sha number"
 
 jobs:
   run-checks:
@@ -25,6 +27,6 @@ jobs:
                  -H "Accept: application/vnd.github.v3+json" \
                  -H "Content-Type: application/json" \
                  https://api.github.com/repos/sangeet-joy-tw/semantic-release-POC/dispatches \
-                 -d '{"event_type": "remote-check-done", "client_payload": { "pr_number": "${{github.event.inputs.pr_number}}", "status": "success"} }'
+                 -d '{"event_type": "remote-check-done", "client_payload": { "pr_number": "${{github.event.inputs.pr_number}}", "status": "success", "pr_sha": "${{github.event.inputs.pr_sha}}"} }'
 
  
