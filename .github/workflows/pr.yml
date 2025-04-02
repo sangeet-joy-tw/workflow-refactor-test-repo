@@ -18,7 +18,7 @@ jobs:
           run: |
             echo "Starting dummy test process..."
             # Simulate a long-running process (e.g., sleep for 1 minute)
-            sleep 30  # This will keep the action running for 60 seconds
+            sleep 70  # This will keep the action running for 60 seconds
             exit 1
             echo "Dummy tests complete."
 
